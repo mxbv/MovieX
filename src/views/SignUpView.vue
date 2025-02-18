@@ -10,10 +10,7 @@ defineRule("required", required);
 defineRule("email", emailValidation);
 defineRule("min", min);
 
-defineRule(
-  "uppercase",
-  (value) => /[A-Z]/.test(value) || "Password must contain at least one uppercase letter."
-);
+
 defineRule(
   "number",
   (value) => /[0-9]/.test(value) || "Password must contain at least one number."
@@ -25,7 +22,7 @@ configure({
     messages: {
       required: "This field is required",
       email: "Please enter a valid email address.",
-      min: "Password must be at least 8 characters.",
+      min: "Password must be at least 4 characters.",
     },
   }),
 });
@@ -33,7 +30,7 @@ configure({
 const email = ref("");
 const password = ref("");
 const emailRules = "required|email";
-const passwordRules = "required|min:8|uppercase|number";
+const passwordRules = "required|min:4|number";
 
 // Используем useRouter для навигации
 const router = useRouter();
@@ -55,6 +52,7 @@ const handleSubmit = (values) => {
       <Form @submit="handleSubmit">
         <div class="input-container">
           <label for="email" class="input-label">Email address</label>
+
           <Field
             type="email"
             name="email"
@@ -62,11 +60,18 @@ const handleSubmit = (values) => {
             class="input"
             :rules="emailRules"
             placeholder="youremail@domain.com"
+            autocomplete="email"
+            list="email-suggestions"
           />
           <ErrorMessage as="email" name="email" class="input-label-error" />
+          <datalist id="email-suggestions">
+            <option value="user@example.com"></option>
+            <option value="admin@example.com"></option>
+          </datalist>
         </div>
         <div class="input-container">
           <label for="password" class="input-label">Password</label>
+
           <Field
             type="password"
             name="password"
@@ -74,9 +79,11 @@ const handleSubmit = (values) => {
             class="input"
             :rules="passwordRules"
             placeholder="Password"
+            autocomplete="password"
+            autoc
           />
-          <ErrorMessage name="password" class="input-label-error" />
         </div>
+        <ErrorMessage name="password" class="input-label-error" />
         <div class="input-container">
           <button type="submit" class="button">Continue</button>
         </div>
@@ -115,20 +122,26 @@ form {
 .input-container {
   margin-top: 30px;
 }
+.label-container {
+  display: flex;
+  justify-content: space-between;
+}
 .input-label {
   display: block;
 }
 .input-label-error {
+  display: block;
   color: #d42e2e;
   font-size: 1rem;
-  margin-top: 5px;
+  font-weight: 300;
+  margin-top: 10px;
 }
 .input {
   width: 100%;
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #0e1017;
-  border: solid 2px #1e2027;
+  background-color: var(--block-color);
+  border: solid 2px var(--border-color);
   border-radius: 15px;
   outline: none;
 }
