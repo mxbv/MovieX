@@ -1,9 +1,15 @@
+<script setup>
+// import { useRoute, useRouter } from "vue-router";
+
+// const route = useRoute();
+// const router = useRouter();
+</script>
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    height="24px"
+    height="38px"
     viewBox="0 -960 960 960"
-    width="24px"
+    width="38px"
     fill="#FFFFFF"
   >
     <path
@@ -11,3 +17,10 @@
     />
   </svg>
 </template>
+
+<style scoped>
+svg {
+  user-select: none;
+  cursor: pointer;
+}
+</style>
