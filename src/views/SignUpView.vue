@@ -5,11 +5,11 @@ import { Form, Field, ErrorMessage, configure, defineRule } from "vee-validate";
 import { required, email as emailValidation, min } from "@vee-validate/rules";
 import { localize } from "@vee-validate/i18n";
 import LogoIcon from "@/assets/img/LogoIcon.vue";
+import FooterItem from "@/components/FooterItem.vue";
 
 defineRule("required", required);
 defineRule("email", emailValidation);
 defineRule("min", min);
-
 
 defineRule(
   "number",
@@ -47,7 +47,7 @@ const handleSubmit = (values) => {
 <template>
   <div class="register-page">
     <LogoIcon />
-    <div class="container">
+    <div class="register-container">
       <h2 class="title">Sign up</h2>
       <Form @submit="handleSubmit">
         <div class="input-container">
@@ -89,6 +89,7 @@ const handleSubmit = (values) => {
         </div>
       </Form>
     </div>
+    <FooterItem />
   </div>
 </template>
 
@@ -107,7 +108,7 @@ const handleSubmit = (values) => {
   top: 20px;
   left: 20px;
 }
-.container {
+.register-container {
   width: 40%;
   height: fit-content;
   margin: 0 auto;
@@ -144,5 +145,10 @@ form {
   border: solid 2px var(--border-color);
   border-radius: 15px;
   outline: none;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
 }
 </style>

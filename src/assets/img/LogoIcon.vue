@@ -49,4 +49,10 @@ svg {
   height: 38px;
   margin-right: 10px;
 }
+@media screen and (max-width: 768px) {
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
 </style>

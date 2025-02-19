@@ -6,11 +6,13 @@
 :root {
   --border-color: #1e2027;
   --block-color: #0e1017;
+  --brand-color: #2d00f0;
 }
 
 * {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: Recursive;
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,10 +30,11 @@ body {
   height: fit-content;
   border: none;
   padding: 10px 20px;
-  background-color: #2d00f0;
+  background-color: var(--brand-color);
   border-radius: 15px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 }
 .button:hover {
   background-color: #4820fa;
