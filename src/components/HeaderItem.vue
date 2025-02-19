@@ -1,20 +1,15 @@
 <script setup>
-import LogoIcon from "@/assets/img/LogoIcon.vue";
-import AccountIcon from "@/assets/img/AccountIcon.vue";
+import LogoIcon from "../assets/img/LogoIcon.vue";
 </script>
 
 <template>
   <header class="header">
     <LogoIcon />
     <div class="nav">
-      <div class="nav-links">
-        <router-link class="nav-links-item" to="/home">Home</router-link>
-        <router-link class="nav-links-item" to="">Movies</router-link>
-        <router-link class="nav-links-item">About</router-link>
-      </div>
-      <div class="nav-user-img">
-        <AccountIcon />
-      </div>
+      <router-link class="nav-links-item" to="/home">Home</router-link>
+      <router-link class="nav-links-item" to="/movies">Movies</router-link>
+      <!-- <router-link class="nav-links-item" to="">About</router-link> -->
+      <router-link class="nav-links-item button" to="/">Sign Up</router-link>
     </div>
   </header>
 </template>
@@ -31,24 +26,20 @@ import AccountIcon from "@/assets/img/AccountIcon.vue";
   transform: translateX(-50%);
   background-color: var(--block-color);
   padding: 10px 20px;
-  border: solid 2px var(--border-color);
+  border: solid 1px var(--border-color);
   border-radius: 15px;
   z-index: 10000;
+  backdrop-filter: blur(15px);
 }
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 350px;
-}
-.nav-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
+  width: 100%;
+  margin-left: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .header {
     width: 90%;
   }

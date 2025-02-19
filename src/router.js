@@ -1,13 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SignUpView from "./views/SignUpView.vue";
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
       name: "Sign Up",
-      component: SignUpView,
+      component: () => import("./views/SignUpView.vue"),
     },
     {
       path: "/home",
@@ -20,10 +18,15 @@ const router = createRouter({
       component: () => import("./views/MoviesView.vue"),
     },
     {
-      path: "/about",
-      name: "movies",
-      component: () => import("./views/AboutView.vue"),
+      path: "/movie/:id",
+      name: "Movie Details",
+      component: () => import("./components/MovieDetails.vue"),
     },
+    // {
+    //   path: "/about",
+    //   name: "movies",
+    //   component: () => import("./views/AboutView.vue"),
+    // },
   ],
 });
 

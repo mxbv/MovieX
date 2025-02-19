@@ -11,7 +11,7 @@
 <style scoped>
 .footer {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -25,6 +25,12 @@
   justify-content: space-between;
   align-items: center;
   width: 30%;
+  background-color: var(--block-color);
+  padding: 10px 20px;
+  border: solid 1px var(--border-color);
+  border-radius: 15px;
+  z-index: 10000;
+  backdrop-filter: blur(15px);
 }
 
 @media screen and (max-width: 768px) {

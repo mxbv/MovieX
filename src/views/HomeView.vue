@@ -1,20 +1,15 @@
-<script setup>
-import HeaderItem from "@/components/HeaderItem.vue";
-import FooterItem from "@/components/FooterItem.vue";
-</script>
+<script setup></script>
 
 <template>
   <main class="home">
-    <HeaderItem />
     <div class="home-bg"></div>
-    <div class="home-container">
+    <div class="container">
       <h1 class="home-title">
         Movie<span class="home-title-x">X</span><br />
         Millions of movies, TV shows and people to discover. Explore now.
       </h1>
       <router-link class="button" to="/movies"> Select movie </router-link>
     </div>
-    <FooterItem />
   </main>
 </template>
 
@@ -35,10 +30,6 @@ import FooterItem from "@/components/FooterItem.vue";
   background-attachment: fixed;
   background-size: cover;
   filter: blur(5px) brightness(0.5);
-}
-.home-container {
-  width: 80%;
-  z-index: 1000;
 }
 .home-title {
   font-size: 4rem;

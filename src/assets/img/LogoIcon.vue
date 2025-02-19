@@ -50,9 +50,6 @@ svg {
   margin-right: 10px;
 }
 @media screen and (max-width: 768px) {
-  svg {
-    width: 32px;
-    height: 32px;
-  }
+  .logo {display: none;}
 }
 </style>

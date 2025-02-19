@@ -21,3 +21,16 @@ export const getMovieDetails = async (id) => {
   const { data } = await tmdb.get(`/movie/${id}`);
   return data;
 };
+// Search movies
+export const searchMovies = async (query, page = 1) => {
+  const { data } = await tmdb.get("/search/movie", {
+    params: { query, page },
+  });
+  return data.results;
+};
+export const getMovieVideos = async (movieId) => {
+  const { data } = await tmdb.get(`/movie/${movieId}/videos`);
+  return data.results.length > 0 ? data.results[0] : null; // Возвращаем первый доступный трейлер
+};
+
+export default tmdb;

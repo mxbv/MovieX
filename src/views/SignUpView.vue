@@ -147,7 +147,7 @@ form {
 }
 
 @media screen and (max-width: 768px) {
-  .container {
+  .register-container {
     width: 90%;
   }
 }

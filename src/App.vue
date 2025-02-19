@@ -19,7 +19,7 @@ export default {
 <template>
   <HeaderItem v-if="!isSignUpPage" />
   <router-view></router-view>
-  <FooterItem />
+  <FooterItem v-if="!isSignUpPage"/>
 </template>
 
 <style scoped></style>
