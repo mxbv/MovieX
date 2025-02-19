@@ -12,8 +12,8 @@ const tmdb = axios.create({
 
 // Get popular movies
 export const getPopularMovies = async (page = 1) => {
-  const { data } = await tmdb.get("movie/popular", { params: { page } });
-  return data.results;
+  const { data } = await tmdb.get("movie/popular", { params: { page, include_adult: false } });
+  return data.results.filter((movie) => !movie.adult);
 };
 
 // Get movie details by ID

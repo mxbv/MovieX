@@ -1,10 +1,41 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { getPopularMovies } from "@/api/tmdb";
-const movies = ref([]);
 
-onMounted(async () => {
-  movies.value = await getPopularMovies();
+const movies = ref([]);
+const page = ref(1);
+const isLoading = ref(false);
+const observer = ref(null); // Ссылка на наблюдаемый элемент
+
+const loadMovies = async () => {
+  if (isLoading.value) return;
+  isLoading.value = true;
+
+  const newMovies = await getPopularMovies(page.value);
+  movies.value.push(...newMovies);
+  page.value++;
+  isLoading.value = false;
+};
+
+// Функция вызывается, когда элемент становится видимым
+const onIntersect = (entries) => {
+  if (entries[0].isIntersecting) {
+    loadMovies();
+  }
+};
+
+onMounted(() => {
+  loadMovies(); // Загружаем первую страницу фильмов
+
+  // Создаём Intersection Observer
+  observer.value = new IntersectionObserver(onIntersect, {
+    rootMargin: "100px",
+  });
+
+  // Подключаем наблюдение за нижним элементом
+  if (observer.value && document.querySelector("#scroll-trigger")) {
+    observer.value.observe(document.querySelector("#scroll-trigger"));
+  }
 });
 </script>
 
@@ -29,10 +60,10 @@ onMounted(async () => {
           <p class="release_date">{{ movie.release_date }}</p>
         </router-link>
       </div>
+      <div id="scroll-trigger"></div>
     </div>
   </main>
 </template>
-
 <style scoped>
 .movies {
   display: flex;
@@ -44,6 +75,7 @@ onMounted(async () => {
 .container {
   height: 100%;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 .movies-title {
   font-size: 2rem;
