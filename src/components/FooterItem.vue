@@ -26,12 +26,7 @@
   align-items: center;
   width: 30%;
 }
-.footer-link {
-  text-decoration: none;
-}
-.footer-link:hover {
-  text-decoration: underline;
-}
+
 @media screen and (max-width: 768px) {
   .footer-links {
     width: 90%;

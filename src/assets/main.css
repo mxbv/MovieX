@@ -7,6 +7,7 @@
   --border-color: #1e2027;
   --block-color: #0e1017;
   --brand-color: #2d00f0;
+  --brand-color-hover: #4820fa;
 }
 
 * {
@@ -34,8 +35,11 @@ body {
   border-radius: 15px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
-  text-decoration: none;
 }
 .button:hover {
-  background-color: #4820fa;
+  background-color: var(--brand-color-hover);
 }
+a {
+  text-decoration: none;
+}
+

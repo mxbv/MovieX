@@ -12,7 +12,7 @@ import FooterItem from "@/components/FooterItem.vue";
         Movie<span class="home-title-x">X</span><br />
         Millions of movies, TV shows and people to discover. Explore now.
       </h1>
-      <router-link class="button"> Select movie </router-link>
+      <router-link class="button" to="/movies"> Select movie </router-link>
     </div>
 
     <FooterItem />
@@ -52,5 +52,22 @@ import FooterItem from "@/components/FooterItem.vue";
 .button {
   display: block;
   margin-top: 50px;
+}
+@media screen and (max-width: 768px) {
+  .home-container {
+    width: 90%;
+  }
+  .home-title {
+    font-size: 2.5rem;
+  }
+  .home-title-x {
+    font-size: 2.5rem;
+    color: var(--brand-color);
+    text-shadow: 1px 1px 2px #000000;
+  }
+  .button {
+    display: block;
+    margin-top: 50px;
+  }
 }
 </style>

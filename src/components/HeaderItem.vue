@@ -7,11 +7,11 @@ import AccountIcon from "@/assets/img/AccountIcon.vue";
   <div class="header">
     <LogoIcon />
     <div class="nav">
-      <ul class="nav-list">
-        <li class="nav-list-item">Home</li>
-        <li class="nav-list-item">Movies</li>
-        <li class="nav-list-item">About</li>
-      </ul>
+      <div class="nav-links">
+        <router-link class="nav-links-item" to="/home">Home</router-link>
+        <router-link class="nav-links-item" to="">Movies</router-link>
+        <router-link class="nav-links-item">About</router-link>
+      </div>
       <div class="nav-user-img">
         <AccountIcon />
       </div>
@@ -41,12 +41,11 @@ import AccountIcon from "@/assets/img/AccountIcon.vue";
   align-items: center;
   width: 350px;
 }
-.nav-list {
+.nav-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
-  width: 80%;
+  width: 70%;
 }
 
 @media screen and (max-width: 768px) {
