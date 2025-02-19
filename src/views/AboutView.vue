@@ -21,8 +21,7 @@
         luctus velit, a elementum nibh nulla vitae tellus. Nullam convallis ornare libero vitae
         sollicitudin. Ut quis urna quam. Mauris sed faucibus dolor. Ut libero augue, dictum at
         ullamcorper quis, dictum feugiat nunc. Nam faucibus ullamcorper porta. Fusce pulvinar sit
-        amet enim nec iaculis. <br />
-        <span class="about-text-vue">Thank you Vue.js!</span>
+        amet enim nec iaculis.
       </p>
     </div>
   </main>
@@ -42,9 +41,7 @@
 .about-text {
   margin-top: 30px;
 }
-.about-text-vue {
-  background-color: var(--brand-color);
-}
+
 @media screen and (max-width: 768px) {
   .about {
     height: 100%;

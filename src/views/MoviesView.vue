@@ -87,6 +87,7 @@ const changePage = (newPage) => {
 }
 .movies-title {
   font-size: 2rem;
+  font-weight: 400;
 }
 .movies-list {
   display: grid;
