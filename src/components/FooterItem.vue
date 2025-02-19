@@ -35,8 +35,8 @@ svg {
   margin-left: 5px;
 }
 @media screen and (max-width: 768px) {
-  .footer-links {
-    width: 90%;
+  .footer {
+    width: 70%;
   }
 }
 </style>
