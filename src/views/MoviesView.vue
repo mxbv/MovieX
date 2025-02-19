@@ -1,42 +1,45 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, watch, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { getPopularMovies } from "@/api/tmdb";
 
 const movies = ref([]);
-const page = ref(1);
+const route = useRoute();
+const router = useRouter();
 const isLoading = ref(false);
-const observer = ref(null); // Ссылка на наблюдаемый элемент
+
+const page = ref(Number(route.query.page) || 1);
 
 const loadMovies = async () => {
   if (isLoading.value) return;
   isLoading.value = true;
 
-  const newMovies = await getPopularMovies(page.value);
-  movies.value.push(...newMovies);
-  page.value++;
+  try {
+    const newMovies = await getPopularMovies(page.value);
+    movies.value = newMovies;
+  } catch (error) {
+    console.error("Ошибка загрузки фильмов:", error);
+  }
+
   isLoading.value = false;
 };
 
-// Функция вызывается, когда элемент становится видимым
-const onIntersect = (entries) => {
-  if (entries[0].isIntersecting) {
+watch(
+  () => route.query.page,
+  (newPage) => {
+    page.value = Number(newPage) || 1;
     loadMovies();
   }
-};
+);
 
 onMounted(() => {
-  loadMovies(); // Загружаем первую страницу фильмов
-
-  // Создаём Intersection Observer
-  observer.value = new IntersectionObserver(onIntersect, {
-    rootMargin: "100px",
-  });
-
-  // Подключаем наблюдение за нижним элементом
-  if (observer.value && document.querySelector("#scroll-trigger")) {
-    observer.value.observe(document.querySelector("#scroll-trigger"));
-  }
+  loadMovies();
 });
+
+const changePage = (newPage) => {
+  if (newPage < 1) return;
+  router.push({ query: { page: newPage } });
+};
 </script>
 
 <template>
@@ -46,9 +49,8 @@ onMounted(() => {
       <div class="movies-list">
         <router-link
           v-for="movie in movies"
-          :to="`/movie/${movie.id}`"
           :key="movie.id"
-          :movie="movie"
+          :to="`/movie/${movie.id}`"
           class="movie-card"
         >
           <img
@@ -57,13 +59,19 @@ onMounted(() => {
             loading="lazy"
           />
           <h3 class="movie-title">{{ movie.title }}</h3>
+          <p class="movie-raiting">Rating : {{ movie.vote_average }} / 10</p>
           <p class="release_date">{{ movie.release_date }}</p>
         </router-link>
       </div>
-      <div id="scroll-trigger"></div>
+      <div class="pagination">
+        <button @click="changePage(page - 1)" :disabled="page <= 1" class="button">Previous</button>
+        <span>Page {{ page }}</span>
+        <button @click="changePage(page + 1)" class="button">Next</button>
+      </div>
     </div>
   </main>
 </template>
+
 <style scoped>
 .movies {
   display: flex;
@@ -98,11 +106,9 @@ onMounted(() => {
   transition: transform 0.2s ease-in-out;
   height: fit-content;
 }
-
 .movie-card:hover {
   transform: scale(1.05);
 }
-
 .movie-card img {
   width: 100%;
   border-radius: 15px;
@@ -111,8 +117,34 @@ onMounted(() => {
   margin-top: 10px;
   font-size: 1.2rem;
 }
+.movie-raiting {
+  margin-top: 10px;
+  color: #7a7a7a;
+}
 .release_date {
   margin-top: 10px;
   color: #7a7a7a;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+@media screen and (max-width: 768px) {
+  .movies-list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    margin-top: 50px;
+  }
+  .movie-card:hover {
+    transform: scale(1);
+  }
 }
 </style>

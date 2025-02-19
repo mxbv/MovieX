@@ -31,14 +31,11 @@ const password = ref("");
 const emailRules = "required|email";
 const passwordRules = "required|min:4|number";
 
-// Используем useRouter для навигации
 const router = useRouter();
 
-// Обработчик отправки формы
 const handleSubmit = (values) => {
   if (values.email && values.password) {
-    // Если форма прошла валидацию, перенаправляем на другую страницу
-    router.push("/home"); // Например, перенаправление на главную страницу
+    router.push("/home");
   }
 };
 </script>

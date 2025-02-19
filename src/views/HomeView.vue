@@ -6,9 +6,9 @@
     <div class="container">
       <h1 class="home-title">
         Movie<span class="home-title-x">X</span><br />
-        Millions of movies, TV shows and people to discover. Explore now.
+        Millions of movies to discover. Explore now.
       </h1>
-      <router-link class="button" to="/movies"> Select movie </router-link>
+      <router-link class="button" to="/movies">Discover movies</router-link>
     </div>
   </main>
 </template>
@@ -42,13 +42,12 @@
 .button {
   display: block;
   margin-top: 50px;
+  padding: 20px 30px;
+  font-size: 1rem;
 }
 @media screen and (max-width: 768px) {
-  .home-container {
-    width: 90%;
-  }
   .home-title {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
   }
   .home-title-x {
     font-size: 2.5rem;

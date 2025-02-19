@@ -27,8 +27,10 @@ onMounted(async () => {
           <h1 class="movie-title">{{ movie.title }}</h1>
           <p class="movie-info-text"><strong>Release Date :</strong> {{ movie.release_date }}</p>
           <p class="movie-info-text"><strong>Rating :</strong> {{ movie.vote_average }} / 10</p>
-          <strong>What's the movie about : </strong>
-          <p class="movie-info-text">{{ movie.overview }}</p>
+
+          <p class="movie-info-text">
+            <strong>What's the movie about : </strong> <br />{{ movie.overview }}
+          </p>
           <p class="movie-info-text">
             <strong>Genres : </strong>
             <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }}</span>
@@ -75,6 +77,7 @@ onMounted(async () => {
   background-color: #0e1017;
   border: solid 1px var(--border-color);
   border-radius: 15px;
+  padding-right: 20px;
 }
 
 .movie-poster {
@@ -112,5 +115,28 @@ iframe {
   width: 100%;
   height: 500px;
   margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .movie-info-container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: #0e1017;
+    border: solid 1px var(--border-color);
+    border-radius: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 15px;
+  }
+  .movie-title {
+    margin-top: 20px;
+  }
 }
 </style>

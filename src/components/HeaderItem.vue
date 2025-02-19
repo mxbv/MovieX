@@ -8,7 +8,7 @@ import LogoIcon from "../assets/img/LogoIcon.vue";
     <div class="nav">
       <router-link class="nav-links-item" to="/home">Home</router-link>
       <router-link class="nav-links-item" to="/movies">Movies</router-link>
-      <!-- <router-link class="nav-links-item" to="">About</router-link> -->
+      <router-link class="nav-links-item" to="/about">About</router-link>
       <router-link class="nav-links-item button" to="/">Sign Up</router-link>
     </div>
   </header>
@@ -42,6 +42,9 @@ import LogoIcon from "../assets/img/LogoIcon.vue";
 @media screen and (max-width: 1200px) {
   .header {
     width: 90%;
+  }
+  .nav {
+    margin-left: 0px;
   }
 }
 </style>

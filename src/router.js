@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
@@ -22,25 +23,25 @@ const router = createRouter({
       name: "Movie Details",
       component: () => import("./components/MovieDetails.vue"),
     },
-    // {
-    //   path: "/about",
-    //   name: "movies",
-    //   component: () => import("./views/AboutView.vue"),
-    // },
+    {
+      path: "/about",
+      name: "About",
+      component: () => import("./views/AboutView.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
-    // Exists when Browser's back/forward pressed
-    if (savedPosition) {
-      return savedPosition;
-      // For anchors
-    } else if (to.hash) {
-      return { selector: to.hash };
-      // By changing queries we are still in the same component, so "from.path" === "to.path" (new query changes just "to.fullPath", but not "to.path").
-    } else if (from.path === to.path) {
-      return {};
-    }
-    // Scroll to top
-    return { x: 0, y: 0 };
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const savedScroll = sessionStorage.getItem("scrollY");
+        if (savedPosition) {
+          return resolve(savedPosition);
+        } else if (savedScroll && to.path === "/movies") {
+          return resolve({ top: Number(savedScroll) });
+        } else {
+          return resolve({ top: 0 });
+        }
+      }, 100);
+    });
   },
 });
 
