@@ -4,7 +4,7 @@ import FooterItem from "@/components/FooterItem.vue";
 </script>
 
 <template>
-  <div class="home">
+  <main class="home">
     <HeaderItem />
     <div class="home-bg"></div>
     <div class="home-container">
@@ -14,9 +14,8 @@ import FooterItem from "@/components/FooterItem.vue";
       </h1>
       <router-link class="button" to="/movies"> Select movie </router-link>
     </div>
-
     <FooterItem />
-  </div>
+  </main>
 </template>
 
 <style scoped>

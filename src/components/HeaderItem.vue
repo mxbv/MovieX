@@ -4,7 +4,7 @@ import AccountIcon from "@/assets/img/AccountIcon.vue";
 </script>
 
 <template>
-  <div class="header">
+  <header class="header">
     <LogoIcon />
     <div class="nav">
       <div class="nav-links">
@@ -16,7 +16,7 @@ import AccountIcon from "@/assets/img/AccountIcon.vue";
         <AccountIcon />
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <style scoped>

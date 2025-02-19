@@ -1,9 +1,7 @@
-<script>
-
-</script>
+<script></script>
 
 <template>
-  <div class="movies"></div>
+  <main class="movies"></main>
 </template>
 
 <style scoped></style>

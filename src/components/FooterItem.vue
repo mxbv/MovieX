@@ -1,11 +1,11 @@
 <template>
-  <div class="footer">
+  <footer class="footer">
     <div class="footer-links">
       <a href="https://github.com/mxbv" class="footer-link" rel="noopener noreferrer">Github</a
       ><a href="mailto:bv.maks@icloud.com" class="footer-link" rel="noopener noreferrer">Email me</a
       ><a href="https://mxbv.github.io/" class="footer-link" rel="noopener noreferrer">mxbv 2025</a>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style scoped>

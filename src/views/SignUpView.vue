@@ -5,7 +5,6 @@ import { Form, Field, ErrorMessage, configure, defineRule } from "vee-validate";
 import { required, email as emailValidation, min } from "@vee-validate/rules";
 import { localize } from "@vee-validate/i18n";
 import LogoIcon from "@/assets/img/LogoIcon.vue";
-import FooterItem from "@/components/FooterItem.vue";
 
 defineRule("required", required);
 defineRule("email", emailValidation);
@@ -45,7 +44,7 @@ const handleSubmit = (values) => {
 </script>
 
 <template>
-  <div class="register-page">
+  <main class="register-page">
     <LogoIcon />
     <div class="register-container">
       <h2 class="title">Sign up</h2>
@@ -89,8 +88,7 @@ const handleSubmit = (values) => {
         </div>
       </Form>
     </div>
-    <FooterItem />
-  </div>
+  </main>
 </template>
 
 <style scoped>
@@ -98,6 +96,7 @@ const handleSubmit = (values) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
   width: 100%;
   height: 100dvh;
   padding: 30px 0px;
@@ -146,6 +145,7 @@ form {
   border-radius: 15px;
   outline: none;
 }
+
 @media screen and (max-width: 768px) {
   .container {
     width: 90%;
