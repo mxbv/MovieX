@@ -62,7 +62,6 @@
   .home-title {
     font-size: 2.2rem;
     text-wrap-style: pretty;
-    font-weight: 400;
   }
   .home-title-x {
     font-size: 2.5rem;

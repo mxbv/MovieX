@@ -20,7 +20,7 @@ import LogoIcon from "../assets/img/LogoIcon.vue";
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  top: 20px;
+  top: 10px;
   width: 40%;
   left: 50%;
   transform: translateX(-50%);

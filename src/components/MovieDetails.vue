@@ -50,7 +50,6 @@ onMounted(async () => {
           allowfullscreen
         ></iframe>
       </div>
-      <router-link to="/movies" class="button">Back to movie list</router-link>
     </div>
   </div>
 </template>
@@ -68,7 +67,7 @@ onMounted(async () => {
 .container {
   margin: 0 auto;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 .movie-info-container {
   display: flex;
@@ -137,6 +136,12 @@ iframe {
   }
   .movie-title {
     margin-top: 20px;
+  }
+  strong {
+    font-weight: 400;
+  }
+  .container {
+    margin-bottom: 20px;
   }
 }
 </style>
